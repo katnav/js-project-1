@@ -1,0 +1,154 @@
+
+<!--
+
+REQUIREMENTS:
+1. Play rock, paper scissors against the computer that keeps going until someone wins 5 games.
+
+2. It should take a user input of ‘rock’, ‘paper’, or ‘scissors’ as a parameter
+
+3. The Computer should randomly draw rock, paper or scissors
+
+4. You need to keep count of wins, losses and ties until someone wins.
+
+5. You need to validate the input from the user to make sure they don't type in "BOMB" or "123", also be aware of capitalization of "Scissors" etc.
+
+
+UAT:
+
+1. empty > OK > keep prompting                          👍🏼
+2. empty > OK > enter uppercase > ROCK                  👍🏼
+3. empty > OK > Cancel                                  👍🏼
+4. cancel                                               👍🏼
+5. rock/paper/scissors > check scores                   👍🏼
+6. check scores total                                   👍🏼
+7. uppercase ROCK/PAPER/SCISSORS                        👍🏼
+8. invalid choice or number > OK > paper > OK           👍🏼
+9. invalid choice or number > OK > PAPER > OK           👍🏼
+10. invalid choice or number > Cancel                   👍🏼
+
+-->
+
+
+<script>
+
+    let choices = ['rock', 'paper', 'scissors'];
+    let playerChoice = '';
+    let computerChoice = '';
+    const playerWin = '🙌🏼 You win this round!';
+    const computerWin = '🖥 Computer wins this round!';
+    const winScore = 5;
+    let playerScore = 0;
+    let computerScore = 0;
+
+
+    let play = () => {
+
+
+    do {
+
+        //PLAYER MOVE
+        playerChoice = prompt(`Enter your choice - rock , paper or scissors.`);
+
+        // CANCEL
+        if (playerChoice === null) {
+            return;
+        }
+
+        playerChoice = playerChoice.toLowerCase();
+
+    }
+
+    // KEEP PROMPTING WHILE:
+    // PLAYER CHOICE IS NOT rock, paper or scissors
+    // OR EITHER SCORE IS NOT EQUAL TO 5
+    // OR INPUT IS EMPTY
+
+
+    while ((choices.indexOf(playerChoice) < 0) || (playerScore > 5 || computerScore > 5 || playerChoice === ''));
+
+
+        // PLAYER MOVE
+        playerChoice = playerChoice.toLowerCase();
+        console.log(`You threw: ${playerChoice}`);
+
+
+        // COMPUTER MOVE
+        let computerChoice = choices[Math.floor(Math.random() * choices.length)]; {
+
+        if (computerChoice) {
+            console.log(`Computer threw: ${computerChoice}`);
+        }
+
+    };
+
+
+        // COMPUTE SCORE
+        if (playerChoice === computerChoice) {
+            console.log(`It's a tie! No score.`);
+
+        } else {
+
+        if (playerChoice === 'rock' && computerChoice === 'scissors') {
+            console.log(playerWin);
+            playerScore += 1;
+
+        } else if (playerChoice === 'paper' && computerChoice === 'rock') {
+            console.log(playerWin);
+            playerScore += 1;
+
+        } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
+            console.log(playerWin);
+            playerScore += 1;
+
+        } else {
+            console.log(computerWin);
+            computerScore += 1;
+
+        }
+
+        };
+
+
+        // DISPLAY SCORE
+
+        if (win === playerWin) {
+            console.log('Your Score: ' + playerScore)
+        };
+
+        if (win === computerWin) {
+            console.log('Computer Score: ' + computerScore)
+        };
+
+        if (playerScore === 5) {
+            console.log('🏆 Congratulations! You won!')
+        };
+
+        if (computerScore === 5) {
+            console.log('☹️ Sorry, you lost to the Computer.')
+        };
+
+
+        // GAME OVER
+
+        if (playerScore === 5 || computerScore === 5) {
+            alert('Game over! ');
+
+        // RESET SCORE TO ZERO
+
+            {
+                const resetGame = () => {
+                    playerScore = 0;
+                    computerScore = 0;
+                };
+
+                resetGame();
+            }
+
+            return;
+
+        } // end do
+
+    }
+
+</script>
+
